@@ -5,6 +5,6 @@ exports[`Square class 1`] = `
   className="square"
   onClick={[Function]}
 >
-  
+  1
 </button>
 `;
