@@ -38,9 +38,15 @@
   },
   "devDependencies": {
     "@types/react-test-renderer": "^16.9.3",
+    "eslint": "^7.6.0",
+    "husky": "^4.2.5",
     "jest": "^26.2.2",
     "jest-css-modules": "^2.1.0",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
     "react-test-renderer": "^16.13.1",
+    "stylelint": "^13.6.1",
     "ts-jest": "^26.1.4"
   },
   "jest": {
@@ -63,5 +69,20 @@
     "moduleNameMapper": {
       "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
     }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "pretty-quick --staged",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{css,scss}": [
+      "stylelint"
+    ]
   }
 }
