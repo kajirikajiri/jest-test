@@ -36,3 +36,18 @@ test("click square button element then change innerHTML blank to X, next change 
   });
   expect(button[1].innerHTML).toEqual("O");
 });
+
+test("click square button element then change innerHTML blank to X, next click same elements then X not change", () => {
+  act(() => {
+    ReactDOM.render(<Board />, container);
+  });
+  const button = container.querySelectorAll(".square");
+  act(() => {
+    button[0].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+  expect(button[0].innerHTML).toEqual("X");
+  act(() => {
+    button[0].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+  expect(button[0].innerHTML).toEqual("X");
+});

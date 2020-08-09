@@ -6,6 +6,7 @@ export const Board: React.FC = () => {
   const [xIsNext, setXIsNext] = useState(true);
 
   const handleClick = (i: number): void => {
+    if (squares[i] !== "") return;
     const newSquares = squares.slice();
     newSquares[i] = xIsNext ? "X" : "O";
     setSquares(newSquares);
