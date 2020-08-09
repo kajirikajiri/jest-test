@@ -3,11 +3,14 @@ import { Square } from "./square";
 
 export const Board: React.FC = () => {
   const [squares, setSquares] = useState(Array(9).fill(""));
+  const [xIsNext, setXIsNext] = useState(true);
 
   const handleClick = (i: number): void => {
     const newSquares = squares.slice();
-    newSquares[i] = "X";
+    newSquares[i] = xIsNext ? "X" : "O";
     setSquares(newSquares);
+
+    setXIsNext(!xIsNext);
   };
 
   const renderSquare = (i: number) => {

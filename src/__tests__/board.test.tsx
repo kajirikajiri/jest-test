@@ -22,13 +22,17 @@ test("Board class", () => {
   expect(tree).toMatchSnapshot();
 });
 
-test("click square button element then change innerHTML blank to X", () => {
+test("click square button element then change innerHTML blank to X, next change blank to O", () => {
   act(() => {
     ReactDOM.render(<Board />, container);
   });
-  const button = container.querySelector(".square");
+  const button = container.querySelectorAll(".square");
   act(() => {
-    button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    button[0].dispatchEvent(new MouseEvent("click", { bubbles: true }));
   });
-  expect(button.innerHTML).toEqual("X");
+  expect(button[0].innerHTML).toEqual("X");
+  act(() => {
+    button[1].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+  expect(button[1].innerHTML).toEqual("O");
 });
