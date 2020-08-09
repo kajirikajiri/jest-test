@@ -1,5 +1,5 @@
-import * as React from "react"
-import {Board} from './board'
+import * as React from "react";
+import { Board } from "./board";
 
 export class Game extends React.Component {
   render() {

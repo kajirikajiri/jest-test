@@ -1,13 +1,13 @@
-import * as React from "react"
-import {Square} from './square'
+import * as React from "react";
+import { Square } from "./square";
 
 export class Board extends React.Component {
-  renderSquare(i:number) {
+  renderSquare(i: number) {
     return <Square />;
   }
 
   render() {
-    const status = 'Next player: X';
+    const status = "Next player: X";
 
     return (
       <div>
