@@ -14,41 +14,19 @@ exports[`Board class 1`] = `
       className="square"
       onClick={[Function]}
     >
-      0
+      
     </button>
     <button
       className="square"
       onClick={[Function]}
     >
-      1
+      
     </button>
     <button
       className="square"
       onClick={[Function]}
     >
-      2
-    </button>
-  </div>
-  <div
-    className="board-row"
-  >
-    <button
-      className="square"
-      onClick={[Function]}
-    >
-      3
-    </button>
-    <button
-      className="square"
-      onClick={[Function]}
-    >
-      4
-    </button>
-    <button
-      className="square"
-      onClick={[Function]}
-    >
-      5
+      
     </button>
   </div>
   <div
@@ -58,19 +36,41 @@ exports[`Board class 1`] = `
       className="square"
       onClick={[Function]}
     >
-      6
+      
     </button>
     <button
       className="square"
       onClick={[Function]}
     >
-      7
+      
     </button>
     <button
       className="square"
       onClick={[Function]}
     >
-      8
+      
+    </button>
+  </div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+      onClick={[Function]}
+    >
+      
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+    >
+      
+    </button>
+    <button
+      className="square"
+      onClick={[Function]}
+    >
+      
     </button>
   </div>
 </div>

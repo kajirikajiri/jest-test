@@ -1,9 +1,17 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { Square } from "./square";
 
 export const Board: React.FC = () => {
-  const renderSquare = (i: string) => {
-    return <Square value={i} />;
+  const [squares, setSquares] = useState(Array(9).fill(""));
+
+  const handleClick = (i: number): void => {
+    const newSquares = squares.slice();
+    newSquares[i] = "X";
+    setSquares(newSquares);
+  };
+
+  const renderSquare = (i: number) => {
+    return <Square onClick={() => handleClick(i)} value={squares[i]} />;
   };
 
   const status = "Next player: X";
@@ -12,19 +20,19 @@ export const Board: React.FC = () => {
     <div>
       <div className="status">{status}</div>
       <div className="board-row">
-        {renderSquare("0")}
-        {renderSquare("1")}
-        {renderSquare("2")}
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
       </div>
       <div className="board-row">
-        {renderSquare("3")}
-        {renderSquare("4")}
-        {renderSquare("5")}
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
       </div>
       <div className="board-row">
-        {renderSquare("6")}
-        {renderSquare("7")}
-        {renderSquare("8")}
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
       </div>
     </div>
   );
