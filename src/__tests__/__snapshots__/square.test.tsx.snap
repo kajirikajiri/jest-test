@@ -3,5 +3,7 @@
 exports[`Square class 1`] = `
 <button
   className="square"
-/>
+>
+  1
+</button>
 `;
