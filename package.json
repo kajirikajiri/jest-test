@@ -39,6 +39,7 @@
   "devDependencies": {
     "@types/react-test-renderer": "^16.9.3",
     "jest": "^26.2.2",
+    "jest-css-modules": "^2.1.0",
     "react-test-renderer": "^16.13.1",
     "ts-jest": "^26.1.4"
   },
@@ -49,7 +50,7 @@
       "tsx"
     ],
     "transform": {
-      "^.+\\.ts$": "ts-jest"
+      "^.+\\.[jt]sx?$": "ts-jest"
     },
     "globals": {
       "ts-jest": {
@@ -58,6 +59,9 @@
     },
     "testMatch": [
       "**/__tests__/**/*.[jt]s?(x)"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    }
   }
 }

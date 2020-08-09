@@ -1,5 +1,5 @@
 import React from 'react'
-import {Game} from '../index'
+import {Game} from '../game'
 import renderer from 'react-test-renderer'
 
 test('Game class', ()=>{

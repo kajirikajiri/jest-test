@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board class 1`] = `
+<div>
+  <div
+    className="status"
+  >
+    Next player: X
+  </div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+    />
+    <button
+      className="square"
+    />
+    <button
+      className="square"
+    />
+  </div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+    />
+    <button
+      className="square"
+    />
+    <button
+      className="square"
+    />
+  </div>
+  <div
+    className="board-row"
+  >
+    <button
+      className="square"
+    />
+    <button
+      className="square"
+    />
+    <button
+      className="square"
+    />
+  </div>
+</div>
+`;
