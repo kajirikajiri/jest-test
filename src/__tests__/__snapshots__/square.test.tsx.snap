@@ -3,7 +3,8 @@
 exports[`Square class 1`] = `
 <button
   className="square"
+  onClick={[Function]}
 >
-  1
+  
 </button>
 `;
