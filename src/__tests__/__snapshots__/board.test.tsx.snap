@@ -3,12 +3,6 @@
 exports[`Board class 1`] = `
 <div>
   <div
-    className="status"
-    data-test="gameStatus"
-  >
-    Next player: X
-  </div>
-  <div
     className="board-row"
   >
     <button

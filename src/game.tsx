@@ -13,7 +13,9 @@ export const Game: React.FC = () => {
   useEffect(() => {
     const newXIsNext = historyIndex % 2 === 0;
     setXIsNext(newXIsNext);
+  });
 
+  useEffect(() => {
     const winner: NextPlayer = calculateWinner(history[historyIndex]);
     winner === "" ? setWin(false) : setWin(true);
   });
@@ -30,18 +32,25 @@ export const Game: React.FC = () => {
     setChangingHistory(false);
   };
 
-  const changeFuture = (i: number) => {
+  const changeHistory = (i: number) => {
     setHistoryIndex(i);
     setChangingHistory(true);
   };
 
-  const moves = history.map((_, move) => {
+  const nextPlayer = (xIsNext: boolean): NextPlayer => (xIsNext ? "X" : "O");
+  const winner = (xIsNext: boolean): NextPlayer => (xIsNext ? "O" : "X");
+
+  const status: String = win
+    ? "winner: " + winner(xIsNext)
+    : "Next player: " + nextPlayer(xIsNext);
+
+  const moves = history.map((_, move: number) => {
     const desc = move ? "Go to move #" + move : "Go to game start";
     return (
       <li key={move}>
         <button
           onClick={() => {
-            changeFuture(move);
+            changeHistory(move);
           }}
         >
           {desc}
@@ -55,14 +64,16 @@ export const Game: React.FC = () => {
       <div className="game-board">
         <Board
           win={win}
-          xIsNext={xIsNext}
+          nextPlayer={nextPlayer(xIsNext)}
           changingHistory={changingHistory}
           squares={history[historyIndex]}
           updateHistory={updateHistory}
         />
       </div>
       <div className="game-info">
-        <div>{/* status */}</div>
+        <div className="status" data-test="gameStatus">
+          {status}
+        </div>
         <ol>{moves}</ol>
       </div>
     </div>

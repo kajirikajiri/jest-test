@@ -9,12 +9,6 @@ exports[`Game class 1`] = `
   >
     <div>
       <div
-        className="status"
-        data-test="gameStatus"
-      >
-        Next player: X
-      </div>
-      <div
         className="board-row"
       >
         <button
@@ -94,7 +88,12 @@ exports[`Game class 1`] = `
   <div
     className="game-info"
   >
-    <div />
+    <div
+      className="status"
+      data-test="gameStatus"
+    >
+      Next player: X
+    </div>
     <ol>
       <li>
         <button

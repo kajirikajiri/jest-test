@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Square } from "./square";
 import { NextPlayer } from "./nextPlayerTypes";
 
@@ -6,25 +6,22 @@ type BoardProps = {
   squares: NextPlayer[];
   updateHistory: (currentHistory: NextPlayer[]) => void;
   changingHistory: boolean;
-  xIsNext: boolean;
+  nextPlayer: NextPlayer;
   win: boolean;
 };
 
 export const Board: React.FC<BoardProps> = ({
-  xIsNext,
+  nextPlayer,
   updateHistory,
   squares,
   changingHistory,
   win,
 }) => {
-  const nextPlayer = (xIsNext: boolean): NextPlayer => (xIsNext ? "X" : "O");
-  const winner = (xIsNext: boolean): NextPlayer => (xIsNext ? "O" : "X");
-
   const handleClick = (i: number): void => {
     if (!changingHistory && (squares[i] !== "" || win)) return;
 
     const newSquares: NextPlayer[] = squares.slice();
-    newSquares[i] = nextPlayer(xIsNext);
+    newSquares[i] = nextPlayer;
     updateHistory(newSquares);
   };
 
@@ -32,15 +29,8 @@ export const Board: React.FC<BoardProps> = ({
     return <Square onClick={() => handleClick(i)} value={squares[i]} />;
   };
 
-  const status: String = win
-    ? "winner: " + winner(xIsNext)
-    : "Next player: " + nextPlayer(xIsNext);
-
   return (
     <div>
-      <div className="status" data-test="gameStatus">
-        {status}
-      </div>
       <div className="board-row">
         {renderSquare(0)}
         {renderSquare(1)}
