@@ -1,8 +1,6 @@
 import React from "react";
 import { Game } from "../game";
 import renderer from "react-test-renderer";
-import ReactDOM from "react-dom";
-import { act } from "react-dom/test-utils";
 
 let container!: any;
 
