@@ -5,10 +5,12 @@ export const Board: React.FC = () => {
   const [squares, setSquares] = useState(Array(9).fill(""));
   const [xIsNext, setXIsNext] = useState(true);
 
+  const nextPlayer = (xIsNext: boolean): String => (xIsNext ? "X" : "O");
+
   const handleClick = (i: number): void => {
     if (squares[i] !== "") return;
     const newSquares = squares.slice();
-    newSquares[i] = xIsNext ? "X" : "O";
+    newSquares[i] = nextPlayer(xIsNext);
     setSquares(newSquares);
 
     setXIsNext(!xIsNext);
@@ -18,7 +20,7 @@ export const Board: React.FC = () => {
     return <Square onClick={() => handleClick(i)} value={squares[i]} />;
   };
 
-  const status = "Next player: X";
+  const status: String = "Next player: " + nextPlayer(xIsNext);
 
   return (
     <div>
