@@ -12,8 +12,12 @@ export const Game: React.FC = () => {
   const [historyIndex, setHistoryIndex] = useState<number>(0);
   const [changingHistory, setChangingHistory] = useState<boolean>(false);
 
+  const squares: NextPlayer[] = history[historyIndex];
   const xIsNext: boolean = useXIsNext(historyIndex);
-  const win: boolean = useWinner(history[historyIndex]);
+  const win: boolean = useWinner(squares);
+  const status: String = win
+    ? "winner: " + winner(xIsNext)
+    : "Next player: " + nextPlayer(xIsNext);
 
   const updateHistory = (squares: NextPlayer[]) => {
     setChangingHistory(false);
@@ -29,29 +33,25 @@ export const Game: React.FC = () => {
     setHistory(newHistory);
   };
 
+  const handleClick = (i: number): void => {
+    if (!changingHistory && (squares[i] !== "" || win)) return;
+
+    const newSquares: NextPlayer[] = squares.slice();
+    newSquares[i] = nextPlayer(xIsNext);
+    updateHistory(newSquares);
+  };
+
   const changeHistory = (i: number) => {
     setHistoryIndex(i);
     setChangingHistory(true);
   };
 
-  const status: String = win
-    ? "winner: " + winner(xIsNext)
-    : "Next player: " + nextPlayer(xIsNext);
-
   const moves = genMoves(changeHistory, history);
-
-  const handleClick = (i: number): void => {
-    if (!changingHistory && (history[historyIndex][i] !== "" || win)) return;
-
-    const newSquares: NextPlayer[] = history[historyIndex].slice();
-    newSquares[i] = nextPlayer(xIsNext);
-    updateHistory(newSquares);
-  };
 
   return (
     <div className="game">
       <div className="game-board">
-        <Board handleClick={handleClick} squares={history[historyIndex]} />
+        <Board handleClick={handleClick} squares={squares} />
       </div>
       <div className="game-info">
         <div className="status" data-test="gameStatus">
