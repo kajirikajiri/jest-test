@@ -1,61 +1,40 @@
 import React, { useState } from "react";
 import { Square } from "./square";
+import { NextPlayer } from "./nextPlayerTypes";
 
-type NextPlayer = "X" | "O" | "";
+type BoardProps = {
+  squares: NextPlayer[];
+  updateHistory: (currentHistory: NextPlayer[]) => void;
+  changingHistory: boolean;
+  xIsNext: boolean;
+  win: boolean;
+};
 
-export const Board: React.FC = () => {
-  const [squares, setSquares] = useState<NextPlayer[]>(Array(9).fill(""));
-  const [xIsNext, setXIsNext] = useState<boolean>(true);
-  const [win, setWin] = useState<boolean>(false);
-
+export const Board: React.FC<BoardProps> = ({
+  xIsNext,
+  updateHistory,
+  squares,
+  changingHistory,
+  win,
+}) => {
   const nextPlayer = (xIsNext: boolean): NextPlayer => (xIsNext ? "X" : "O");
+  const winner = (xIsNext: boolean): NextPlayer => (xIsNext ? "O" : "X");
 
   const handleClick = (i: number): void => {
-    if (squares[i] !== "" || win) return;
+    if (!changingHistory && (squares[i] !== "" || win)) return;
 
     const newSquares: NextPlayer[] = squares.slice();
     newSquares[i] = nextPlayer(xIsNext);
-    setSquares(newSquares);
-
-    const winner: NextPlayer = calculateWinner(newSquares);
-
-    if (winner === "") {
-      setXIsNext(!xIsNext);
-    } else {
-      setWin(true);
-    }
+    updateHistory(newSquares);
   };
-
-  function calculateWinner(squares: NextPlayer[]): NextPlayer {
-    const lines: number[][] = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
-    for (let i = 0; i < lines.length; i++) {
-      const [a, b, c] = lines[i];
-      if (
-        squares[a] &&
-        squares[a] === squares[b] &&
-        squares[a] === squares[c]
-      ) {
-        return squares[a];
-      }
-    }
-    return "";
-  }
 
   const renderSquare = (i: number) => {
     return <Square onClick={() => handleClick(i)} value={squares[i]} />;
   };
 
-  const status: String =
-    (win ? "winner: " : "Next player: ") + nextPlayer(xIsNext);
+  const status: String = win
+    ? "winner: " + winner(xIsNext)
+    : "Next player: " + nextPlayer(xIsNext);
 
   return (
     <div>

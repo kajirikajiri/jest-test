@@ -22,16 +22,12 @@ exports[`Board class 1`] = `
       className="square"
       data-test="square"
       onClick={[Function]}
-    >
-      
-    </button>
+    />
     <button
       className="square"
       data-test="square"
       onClick={[Function]}
-    >
-      
-    </button>
+    />
   </div>
   <div
     className="board-row"
@@ -40,23 +36,17 @@ exports[`Board class 1`] = `
       className="square"
       data-test="square"
       onClick={[Function]}
-    >
-      
-    </button>
+    />
     <button
       className="square"
       data-test="square"
       onClick={[Function]}
-    >
-      
-    </button>
+    />
     <button
       className="square"
       data-test="square"
       onClick={[Function]}
-    >
-      
-    </button>
+    />
   </div>
   <div
     className="board-row"
@@ -65,23 +55,17 @@ exports[`Board class 1`] = `
       className="square"
       data-test="square"
       onClick={[Function]}
-    >
-      
-    </button>
+    />
     <button
       className="square"
       data-test="square"
       onClick={[Function]}
-    >
-      
-    </button>
+    />
     <button
       className="square"
       data-test="square"
       onClick={[Function]}
-    >
-      
-    </button>
+    />
   </div>
 </div>
 `;

@@ -95,7 +95,15 @@ exports[`Game class 1`] = `
     className="game-info"
   >
     <div />
-    <ol />
+    <ol>
+      <li>
+        <button
+          onClick={[Function]}
+        >
+          Go to game start
+        </button>
+      </li>
+    </ol>
   </div>
 </div>
 `;
