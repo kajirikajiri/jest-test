@@ -16,15 +16,17 @@ export const Game: React.FC = () => {
   const win: boolean = useWinner(history[historyIndex]);
 
   const updateHistory = (squares: NextPlayer[]) => {
-    const newHistory: NextPlayer[][] = history.slice();
+    setChangingHistory(false);
+
     const newHistoryIndex = historyIndex + 1;
+    setHistoryIndex(newHistoryIndex);
+
+    const newHistory: NextPlayer[][] = history.slice();
     newHistory[newHistoryIndex] = squares;
     for (let i = newHistoryIndex + 1; i < 10; i++) {
       delete newHistory[i];
     }
     setHistory(newHistory);
-    setHistoryIndex(newHistoryIndex);
-    setChangingHistory(false);
   };
 
   const changeHistory = (i: number) => {
