@@ -4,6 +4,8 @@ import { NextPlayer } from "./nextPlayerTypes";
 import { useXIsNext } from "./useXIsNext";
 import { useWinner } from "./useWinner";
 import { genMoves } from "./genMoves";
+import { nextPlayer } from "./nextPlayer";
+import { winner } from "./winner";
 
 export const Game: React.FC = () => {
   const [history, setHistory] = useState<NextPlayer[][]>([Array(9).fill("")]);
@@ -29,9 +31,6 @@ export const Game: React.FC = () => {
     setHistoryIndex(i);
     setChangingHistory(true);
   };
-
-  const nextPlayer = (xIsNext: boolean): NextPlayer => (xIsNext ? "X" : "O");
-  const winner = (xIsNext: boolean): NextPlayer => (xIsNext ? "O" : "X");
 
   const status: String = win
     ? "winner: " + winner(xIsNext)
