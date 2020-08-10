@@ -3,6 +3,7 @@
 exports[`Square class 1`] = `
 <button
   className="square"
+  data-test="square"
   onClick={[Function]}
 >
   1

@@ -9,6 +9,7 @@ export const Square: React.FC<SquareProps> = ({ value, onClick }) => {
   return (
     <button
       className="square"
+      data-test="square"
       onClick={() => {
         onClick();
       }}

@@ -59,7 +59,9 @@ export const Board: React.FC = () => {
 
   return (
     <div>
-      <div className="status">{status}</div>
+      <div className="status" data-test="gameStatus">
+        {status}
+      </div>
       <div className="board-row">
         {renderSquare(0)}
         {renderSquare(1)}

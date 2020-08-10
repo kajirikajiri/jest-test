@@ -10,6 +10,7 @@ exports[`Game class 1`] = `
     <div>
       <div
         className="status"
+        data-test="gameStatus"
       >
         Next player: X
       </div>
@@ -18,40 +19,21 @@ exports[`Game class 1`] = `
       >
         <button
           className="square"
+          data-test="square"
           onClick={[Function]}
         >
           
         </button>
         <button
           className="square"
+          data-test="square"
           onClick={[Function]}
         >
           
         </button>
         <button
           className="square"
-          onClick={[Function]}
-        >
-          
-        </button>
-      </div>
-      <div
-        className="board-row"
-      >
-        <button
-          className="square"
-          onClick={[Function]}
-        >
-          
-        </button>
-        <button
-          className="square"
-          onClick={[Function]}
-        >
-          
-        </button>
-        <button
-          className="square"
+          data-test="square"
           onClick={[Function]}
         >
           
@@ -62,18 +44,46 @@ exports[`Game class 1`] = `
       >
         <button
           className="square"
+          data-test="square"
           onClick={[Function]}
         >
           
         </button>
         <button
           className="square"
+          data-test="square"
           onClick={[Function]}
         >
           
         </button>
         <button
           className="square"
+          data-test="square"
+          onClick={[Function]}
+        >
+          
+        </button>
+      </div>
+      <div
+        className="board-row"
+      >
+        <button
+          className="square"
+          data-test="square"
+          onClick={[Function]}
+        >
+          
+        </button>
+        <button
+          className="square"
+          data-test="square"
+          onClick={[Function]}
+        >
+          
+        </button>
+        <button
+          className="square"
+          data-test="square"
           onClick={[Function]}
         >
           
