@@ -26,7 +26,7 @@ test("click square button element then change innerHTML blank to X, next change 
   act(() => {
     ReactDOM.render(<Board />, container);
   });
-  const button = container.querySelectorAll(".square");
+  const button = container.querySelectorAll("[data-test=square]");
   act(() => {
     button[0].dispatchEvent(new MouseEvent("click", { bubbles: true }));
   });
@@ -41,7 +41,7 @@ test("click square button element then change innerHTML blank to X, next click s
   act(() => {
     ReactDOM.render(<Board />, container);
   });
-  const button = container.querySelectorAll(".square");
+  const button = container.querySelectorAll("[data-test=square]");
   act(() => {
     button[0].dispatchEvent(new MouseEvent("click", { bubbles: true }));
   });
@@ -56,7 +56,7 @@ test("show winner states", () => {
   act(() => {
     ReactDOM.render(<Board />, container);
   });
-  const button = container.querySelectorAll(".square");
+  const button = container.querySelectorAll("[data-test=square]");
   act(() => {
     button[0].dispatchEvent(new MouseEvent("click", { bubbles: true }));
   });
@@ -72,6 +72,6 @@ test("show winner states", () => {
   act(() => {
     button[6].dispatchEvent(new MouseEvent("click", { bubbles: true }));
   });
-  const status = container.querySelector(".status");
+  const status = container.querySelector("[data-test=gameStatus]");
   expect(status.innerHTML).toEqual("winner: X");
 });
