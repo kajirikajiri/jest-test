@@ -51,3 +51,27 @@ test("click square button element then change innerHTML blank to X, next click s
   });
   expect(button[0].innerHTML).toEqual("X");
 });
+
+test("show winner states", () => {
+  act(() => {
+    ReactDOM.render(<Board />, container);
+  });
+  const button = container.querySelectorAll(".square");
+  act(() => {
+    button[0].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+  act(() => {
+    button[1].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+  act(() => {
+    button[3].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+  act(() => {
+    button[2].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+  act(() => {
+    button[6].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+  const status = container.querySelector(".status");
+  expect(status.innerHTML).toEqual("winner: X");
+});
