@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Board } from "./board";
 import { NextPlayer } from "./nextPlayerTypes";
-import { calculateWinner } from "./calculateWinner";
 import { useXIsNext } from "./useXIsNext";
+import { useWinner } from "./useWinner";
 
 export const Game: React.FC = () => {
   const [history, setHistory] = useState<NextPlayer[][]>([Array(9).fill("")]);
   const [historyIndex, setHistoryIndex] = useState<number>(0);
   const [changingHistory, setChangingHistory] = useState<boolean>(false);
-  const [win, setWin] = useState<boolean>(false);
 
   const xIsNext: boolean = useXIsNext(historyIndex);
+  const win: boolean = useWinner(history[historyIndex]);
 
-  useEffect(() => {
-    const winner: NextPlayer = calculateWinner(history[historyIndex]);
-    winner === "" ? setWin(false) : setWin(true);
-  });
-
-  const updateHistory = (currentHistory: NextPlayer[]) => {
+  const updateHistory = (squares: NextPlayer[]) => {
     const newHistory: NextPlayer[][] = history.slice();
     const newHistoryIndex = historyIndex + 1;
-    newHistory[newHistoryIndex] = currentHistory;
+    newHistory[newHistoryIndex] = squares;
     for (let i = newHistoryIndex + 1; i < 10; i++) {
       delete newHistory[i];
     }
