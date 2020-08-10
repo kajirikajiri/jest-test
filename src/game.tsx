@@ -4,24 +4,19 @@ import { NextPlayer } from "./nextPlayerTypes";
 import { useXIsNext } from "./useXIsNext";
 import { useWinner } from "./useWinner";
 import { genMoves } from "./genMoves";
-import { nextPlayer } from "./nextPlayer";
-import { winner } from "./winner";
+import { getStatus, nextPlayer } from "./getStatus";
 
 export const Game: React.FC = () => {
   const [history, setHistory] = useState<NextPlayer[][]>([Array(9).fill("")]);
   const [historyIndex, setHistoryIndex] = useState<number>(0);
-  const [changingHistory, setChangingHistory] = useState<boolean>(false);
 
   const squares: NextPlayer[] = history[historyIndex];
   const xIsNext: boolean = useXIsNext(historyIndex);
   const win: boolean = useWinner(squares);
-  const status: String = win
-    ? "winner: " + winner(xIsNext)
-    : "Next player: " + nextPlayer(xIsNext);
+  const status: String = getStatus(win, xIsNext);
+  const moves = genMoves(setHistoryIndex, history);
 
   const updateHistory = (squares: NextPlayer[]) => {
-    setChangingHistory(false);
-
     const newHistoryIndex = historyIndex + 1;
     setHistoryIndex(newHistoryIndex);
 
@@ -34,19 +29,12 @@ export const Game: React.FC = () => {
   };
 
   const handleClick = (i: number): void => {
-    if (!changingHistory && (squares[i] !== "" || win)) return;
+    if (squares[i] !== "" || win) return;
 
     const newSquares: NextPlayer[] = squares.slice();
     newSquares[i] = nextPlayer(xIsNext);
     updateHistory(newSquares);
   };
-
-  const changeHistory = (i: number) => {
-    setHistoryIndex(i);
-    setChangingHistory(true);
-  };
-
-  const moves = genMoves(changeHistory, history);
 
   return (
     <div className="game">
