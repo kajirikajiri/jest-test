@@ -3,6 +3,7 @@ import { Board } from "./board";
 import { NextPlayer } from "./nextPlayerTypes";
 import { useXIsNext } from "./useXIsNext";
 import { useWinner } from "./useWinner";
+import { genMoves } from "./genMoves";
 
 export const Game: React.FC = () => {
   const [history, setHistory] = useState<NextPlayer[][]>([Array(9).fill("")]);
@@ -36,20 +37,7 @@ export const Game: React.FC = () => {
     ? "winner: " + winner(xIsNext)
     : "Next player: " + nextPlayer(xIsNext);
 
-  const moves = history.map((_, move: number) => {
-    const desc = move ? "Go to move #" + move : "Go to game start";
-    return (
-      <li key={move}>
-        <button
-          onClick={() => {
-            changeHistory(move);
-          }}
-        >
-          {desc}
-        </button>
-      </li>
-    );
-  });
+  const moves = genMoves(changeHistory, history);
 
   return (
     <div className="game">
