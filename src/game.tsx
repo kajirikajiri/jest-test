@@ -2,18 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Board } from "./board";
 import { NextPlayer } from "./nextPlayerTypes";
 import { calculateWinner } from "./calculateWinner";
+import { useXIsNext } from "./useXIsNext";
 
 export const Game: React.FC = () => {
   const [history, setHistory] = useState<NextPlayer[][]>([Array(9).fill("")]);
   const [historyIndex, setHistoryIndex] = useState<number>(0);
   const [changingHistory, setChangingHistory] = useState<boolean>(false);
-  const [xIsNext, setXIsNext] = useState<boolean>(true);
   const [win, setWin] = useState<boolean>(false);
 
-  useEffect(() => {
-    const newXIsNext = historyIndex % 2 === 0;
-    setXIsNext(newXIsNext);
-  });
+  const xIsNext: boolean = useXIsNext(historyIndex);
 
   useEffect(() => {
     const winner: NextPlayer = calculateWinner(history[historyIndex]);
