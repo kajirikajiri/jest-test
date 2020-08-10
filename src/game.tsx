@@ -40,16 +40,18 @@ export const Game: React.FC = () => {
 
   const moves = genMoves(changeHistory, history);
 
+  const handleClick = (i: number): void => {
+    if (!changingHistory && (history[historyIndex][i] !== "" || win)) return;
+
+    const newSquares: NextPlayer[] = history[historyIndex].slice();
+    newSquares[i] = nextPlayer(xIsNext);
+    updateHistory(newSquares);
+  };
+
   return (
     <div className="game">
       <div className="game-board">
-        <Board
-          win={win}
-          nextPlayer={nextPlayer(xIsNext)}
-          changingHistory={changingHistory}
-          squares={history[historyIndex]}
-          updateHistory={updateHistory}
-        />
+        <Board handleClick={handleClick} squares={history[historyIndex]} />
       </div>
       <div className="game-info">
         <div className="status" data-test="gameStatus">

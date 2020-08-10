@@ -16,13 +16,7 @@ afterEach(() => {
 
 test("Board class", () => {
   const component = renderer.create(
-    <Board
-      squares={[""]}
-      updateHistory={() => {}}
-      changingHistory={false}
-      win={false}
-      nextPlayer={""}
-    />
+    <Board squares={[""]} handleClick={() => {}} />
   );
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();

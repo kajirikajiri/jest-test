@@ -4,27 +4,10 @@ import { NextPlayer } from "./nextPlayerTypes";
 
 type BoardProps = {
   squares: NextPlayer[];
-  updateHistory: (currentHistory: NextPlayer[]) => void;
-  changingHistory: boolean;
-  nextPlayer: NextPlayer;
-  win: boolean;
+  handleClick: (i: number) => void;
 };
 
-export const Board: React.FC<BoardProps> = ({
-  nextPlayer,
-  updateHistory,
-  squares,
-  changingHistory,
-  win,
-}) => {
-  const handleClick = (i: number): void => {
-    if (!changingHistory && (squares[i] !== "" || win)) return;
-
-    const newSquares: NextPlayer[] = squares.slice();
-    newSquares[i] = nextPlayer;
-    updateHistory(newSquares);
-  };
-
+export const Board: React.FC<BoardProps> = ({ squares, handleClick }) => {
   const renderSquare = (i: number) => {
     return <Square onClick={() => handleClick(i)} value={squares[i]} />;
   };
