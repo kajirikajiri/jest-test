@@ -55,7 +55,6 @@
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
-    "puppeteer": "^5.2.1",
     "react-test-renderer": "^16.13.1",
     "stylelint": "^13.6.1",
     "stylelint-config-recommended": "^3.0.0",
