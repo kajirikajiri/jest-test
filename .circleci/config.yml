@@ -43,9 +43,6 @@ jobs:
       - checkout
       - restore_modules
       - run:
-          name: dockerps
-          command: hostname -f
-      - run:
           name: "Install and update webdriver"
           command: sudo npm install -g webdriver-manager && sudo -s webdriver-manager update
       - run: 
@@ -54,11 +51,11 @@ jobs:
           command: webdriver-manager start # --seleniumPort 3000
       - run: 
           name: install puppeteer
-          command: yarn add puppeteer
+          command: npm install puppeteer
       - run:
           name: "Start server"
           # background: true
-          command: yarn start
+          command: npm run start
       - run: 
           name: run test
           command: ./sh.sh
