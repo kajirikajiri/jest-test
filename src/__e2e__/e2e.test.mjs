@@ -8,7 +8,7 @@ import puppeteer from 'puppeteer'
   });
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36');
   await page.waitFor(10000)
-  await page.goto('http://127.0.0.1:3000')
+  await page.goto(process.env.APP_ORIGIN)
   await page.screenshot({path: 'example.png'});
   await page.evaluate(() => {
     const elements = document.querySelectorAll('[data-test=square]')
