@@ -42,20 +42,20 @@ jobs:
     steps:
       - checkout
       - restore_modules
+      - run:
+          name: "Install and update webdriver"
+          command: sudo npm install -g webdriver-manager && sudo -s webdriver-manager update
+      - run: 
+          name: "Start webdriver"
+          background: true
+          command: webdriver-manager start --port 3000
       - run: 
           name: install puppeteer
           command: yarn add puppeteer
       - run:
-          name: "Install and update webdriver"
-          command: sudo npm install -g webdriver-manager && sudo -s webdriver-manager update
-      - run:
           name: "Start server"
           # background: true
           command: yarn start
-      - run: 
-          name: "Start webdriver"
-          # background: true
-          command: webdriver-manager start
       - run: 
           name: run test
           command: ./sh.sh
