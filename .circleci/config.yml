@@ -54,7 +54,7 @@ jobs:
           command: npm install puppeteer
       - run:
           name: "Start server"
-          # background: true
+          background: true
           command: npm run start
       - run: 
           name: run test
