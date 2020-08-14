@@ -43,6 +43,9 @@ jobs:
       - checkout
       - restore_modules
       - run:
+          name: dockerps
+          command: sudo docker ps
+      - run:
           name: "Install and update webdriver"
           command: sudo npm install -g webdriver-manager && sudo -s webdriver-manager update
       - run: 
