@@ -51,7 +51,7 @@ jobs:
           command: webdriver-manager start # --seleniumPort 3000
       - run: 
           name: install puppeteer
-          command: npm install puppeteer
+          command: npm install puppeteer react-scripts
       - run:
           name: "Start server"
           background: true
