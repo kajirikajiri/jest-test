@@ -48,7 +48,7 @@ jobs:
       - run: 
           name: "Start webdriver"
           background: true
-          command: webdriver-manager start --port 3000
+          command: webdriver-manager start --seleniumPort 3000
       - run: 
           name: install puppeteer
           command: yarn add puppeteer
