@@ -52,6 +52,8 @@ jobs:
       - run: 
           name: install puppeteer
           command: npm install puppeteer react-scripts
+      - run: chmod +x ./setup_libxcb.sh
+      - run: sh ./setup_libxcb.sh
       - run:
           name: "Start server"
           background: true
