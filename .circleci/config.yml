@@ -54,7 +54,6 @@ jobs:
           command: npm install puppeteer
       - run:
           name: "Start server"
-          background: true
           command: npm run start && source sh.sh
 workflows:
   version: 2
