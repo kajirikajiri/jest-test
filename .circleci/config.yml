@@ -41,6 +41,7 @@ jobs:
       - image: circleci/node:latest-browsers
     steps:
       - checkout
+      - restore_modules
       - run: 
           name: install puppeteer
           command: yarn add puppeteer
