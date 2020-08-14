@@ -55,7 +55,7 @@ jobs:
       - run:
           name: "Start server"
           background: true
-          command: npm run start && sh sh.sh
+          command: npm run start && source sh.sh
 workflows:
   version: 2
   build_and_test:
