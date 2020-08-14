@@ -3,7 +3,11 @@ import puppeteer from 'puppeteer'
 (async () => {
   const browser = await puppeteer.launch({ ignoreHTTPSErrors: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
   const page = await browser.newPage();
-  await page.goto('http://localhost:3000');
+  await page.goto('http://localhost:3000', {
+          networkIdleTimeout: 1000,
+          waitUntil: 'networkidle',
+          timeout: 3000000
+        });
   await page.screenshot({path: 'example.png'});
   await page.evaluate(() => {
     const elements = document.querySelectorAll('[data-test=square]')
