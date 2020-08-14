@@ -54,7 +54,7 @@ jobs:
           command: npm install puppeteer
       - run:
           name: "Start server"
-          command: npm run start && source sh.sh
+          command: npm run ttt
 workflows:
   version: 2
   build_and_test:

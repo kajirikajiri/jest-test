@@ -20,7 +20,8 @@
     "build": "react-scripts build",
     "test": "jest",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "ttt": "npm run start && source sh.sh"
   },
   "eslintConfig": {
     "extends": "react-app"
