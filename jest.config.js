@@ -1,6 +1,6 @@
 let e2e = false;
 process.argv.forEach((arg) => {
-  if (arg === "-e2e") e2e = true;
+  if (arg === "-e2e" || arg === "-e2e-head-full") e2e = true;
 });
 module.exports = {
   moduleFileExtensions: ["ts", "js", "tsx"],

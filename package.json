@@ -21,7 +21,8 @@
     "test": "jest",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "eject": "react-scripts eject",
-    "e2e": "jest -e2e"
+    "e2e": "jest -e2e",
+    "e2e:headfull": "jest -e2e-head-full"
   },
   "eslintConfig": {
     "extends": "react-app"
