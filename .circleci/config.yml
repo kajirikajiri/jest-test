@@ -2,9 +2,7 @@ version: 2.1
 executors:
   node:
     docker:
-      - image: circleci/node:latest-browsers
-    # docker:
-    #   - image: circleci/node:12
+      - image: circleci/node:12
 commands:
   restore_modules:
     steps:
@@ -40,9 +38,8 @@ jobs:
           name: unit test
           command: yarn test
   e2e:
-    executor: node
-    # docker:
-    #   - image: circleci/node:latest-browsers
+    docker:
+      - image: circleci/node:latest-browsers
     steps:
       - checkout
       - restore_modules
