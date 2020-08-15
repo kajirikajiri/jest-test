@@ -33,6 +33,7 @@ jobs:
       - run:
           name: install dependencies
           command: yarn install
+      - save_modules
       - run:
           name: unit test
           command: yarn test
@@ -42,19 +43,10 @@ jobs:
     steps:
       - checkout
       - restore_modules
-      # - run:
-      #     name: "Install and update webdriver"
-      #     command: sudo npm install -g webdriver-manager && sudo -s webdriver-manager update
-      # - run:
-      #     name: "Start webdriver"
-      #     background: true
-      #     command: webdriver-manager start # --seleniumPort 3000
-      # - run:
-      #     name: install puppeteer
-      #     command: npm install puppeteer
       - run:
           name: "install"
           command: "yarn install"
+      - save_modules
       - run:
           name: "test"
           command: "yarn e2e"
