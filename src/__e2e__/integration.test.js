@@ -10,7 +10,7 @@ describe(
       await page.goto("http://127.0.0.1:3000");
     }, timeout);
 
-    it("winner x", async () => {
+    test("winner x", async () => {
       await page.evaluate(() => {
         const elements = document.querySelectorAll("[data-test=square]");
         for (const element of elements) {
@@ -23,10 +23,11 @@ describe(
           console.log(element);
         }
       });
-      await page.evaluate(() => {
+      const result = await page.evaluate(() => {
         const element = document.querySelector("[data-test=gameStatus]");
-        expect(element.innerText).toBe("winner: X");
+        return element.innerText;
       });
+      expect(result).toEqual("winner: X");
     });
   },
   timeout
