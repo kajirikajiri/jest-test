@@ -12,8 +12,28 @@ describe(
     }, timeout);
 
     it("should load without error", async () => {
-      const text = await page.evaluate(() => document.body.textContent);
-      expect(text).toContain("google");
+      await page.evaluate(() => {
+        const elements = document.querySelectorAll("[data-test=square]");
+        for (const element of elements) {
+          element.click();
+        }
+      });
+      await page.evaluate(() => {
+        const elements = document.querySelectorAll("[data-test=square]");
+        for (const element of elements) {
+          console.log(element);
+        }
+      });
+      const message = await page.evaluate(() => {
+        const element = document.querySelector("[data-test=gameStatus]");
+        if (element.innerText !== "winner: X") {
+          return "error";
+        }
+        return "success";
+      });
+      console.log(message);
+      // const text = await page.evaluate(() => document.body.textContent);
+      // expect(text).toContain("google");
     });
   },
   timeout
