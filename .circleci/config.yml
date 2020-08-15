@@ -128,3 +128,6 @@ workflows:
       - build
       - test
       - e2e
+      - e2e1
+      - e2e2
+      - e2e3
