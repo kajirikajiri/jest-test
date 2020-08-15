@@ -48,12 +48,6 @@ jobs:
           command: "yarn install"
       - save_modules
       - run:
-          name: "start"
-          command: "yarn start"
-      - run:
-          name: "check port"
-          command: "nc -vz 127.0.0.1 3000"
-      - run:
           name: "test"
           command: "yarn e2e"
 workflows:
