@@ -46,7 +46,9 @@ jobs:
       - run:
           name: "install"
           command: "yarn install"
+      - run: "sudo npm i forever -g"
       - save_modules
+      - run: forever start -c "yarn start" ./
       - run:
           name: "test"
           command: "yarn e2e"
