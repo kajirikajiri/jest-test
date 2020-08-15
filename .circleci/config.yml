@@ -48,6 +48,9 @@ jobs:
           command: "yarn install"
       - save_modules
       - run:
+          name: "start"
+          command: "yarn start"
+      - run:
           name: "test"
           command: "yarn e2e"
 workflows:
