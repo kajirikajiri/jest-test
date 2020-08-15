@@ -11,7 +11,7 @@ commands:
   save_modules:
     steps:
       - save_cache:
-          key:  dependency-cache-{{ checksum "yarn.lock" }}
+          key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
 
@@ -42,19 +42,22 @@ jobs:
     steps:
       - checkout
       - restore_modules
+      # - run:
+      #     name: "Install and update webdriver"
+      #     command: sudo npm install -g webdriver-manager && sudo -s webdriver-manager update
+      # - run:
+      #     name: "Start webdriver"
+      #     background: true
+      #     command: webdriver-manager start # --seleniumPort 3000
+      # - run:
+      #     name: install puppeteer
+      #     command: npm install puppeteer
       - run:
-          name: "Install and update webdriver"
-          command: sudo npm install -g webdriver-manager && sudo -s webdriver-manager update
-      - run: 
-          name: "Start webdriver"
-          background: true
-          command: webdriver-manager start # --seleniumPort 3000
-      - run: 
-          name: install puppeteer
-          command: npm install puppeteer
+          name: "install"
+          command: "yarn install"
       - run:
-          name: "Start server"
-          command: npm run ttt
+          name: "test"
+          command: "yarn e2e"
 workflows:
   version: 2
   build_and_test:

@@ -1,3 +1,7 @@
+let e2e = false;
+process.argv.forEach((arg) => {
+  if (arg === "-e2e") e2e = true;
+});
 module.exports = {
   moduleFileExtensions: ["ts", "js", "tsx"],
   transform: {
@@ -8,8 +12,13 @@ module.exports = {
       tsConfig: "tsconfig.json",
     },
   },
-  testMatch: ["**/__tests__/**/*.[jt]s?(x)"],
+  testMatch: e2e
+    ? ["**/__e2e__/**/*.[jt]s?(x)"]
+    : ["**/__tests__/**/*.[jt]s?(x)"],
   moduleNameMapper: {
     "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules",
   },
+  globalSetup: e2e ? "./puppeteer-settings/setup.js" : "",
+  globalTeardown: e2e ? "./puppeteer-settings/teardown.js" : "",
+  testEnvironment: e2e ? "./puppeteer-settings/puppeteer_environment.js" : "",
 };
