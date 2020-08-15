@@ -37,6 +37,69 @@ jobs:
       - run:
           name: unit test
           command: yarn test
+  e2e1:
+    docker:
+      - image: circleci/node:latest-browsers
+    steps:
+      - checkout
+      - restore_modules
+      - run:
+          name: "install"
+          command: "yarn install"
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:3000 -timeout 1m
+      - save_modules
+      - run:
+          name: "test"
+          command: "yarn e2e"
+  e2e2:
+    docker:
+      - image: circleci/node:latest-browsers
+    steps:
+      - checkout
+      - restore_modules
+      - run:
+          name: "install"
+          command: "yarn install"
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+      - run:
+          name: Wait for db
+          command: dockerize -wait http://localhost:3000 -timeout 1m
+      - save_modules
+      - run:
+          name: "test"
+          command: "yarn e2e"
+  e2e3:
+    docker:
+      - image: circleci/node:latest-browsers
+    steps:
+      - checkout
+      - restore_modules
+      - run:
+          name: "install"
+          command: "yarn install"
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+      - run:
+          name: Wait for db
+          command: dockerize -wait http://127.0.0.1:3000 -timeout 1m
+      - save_modules
+      - run:
+          name: "test"
+          command: "yarn e2e"
   e2e:
     docker:
       - image: circleci/node:latest-browsers
@@ -46,6 +109,14 @@ jobs:
       - run:
           name: "install"
           command: "yarn install"
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://127.0.0.1:3000 -timeout 1m
       - save_modules
       - run:
           name: "test"
