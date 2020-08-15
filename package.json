@@ -21,7 +21,7 @@
     "test": "jest",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "eject": "react-scripts eject",
-    "e2e": "react-scripts start && nc -vz node 3000 && jest -e2e"
+    "e2e": "react-scripts start && jest -e2e"
   },
   "eslintConfig": {
     "extends": "react-app"
