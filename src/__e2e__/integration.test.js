@@ -23,14 +23,10 @@ describe(
           console.log(element);
         }
       });
-      const message = await page.evaluate(() => {
+      await page.evaluate(() => {
         const element = document.querySelector("[data-test=gameStatus]");
-        if (element.innerText !== "winner: X") {
-          return "error";
-        }
-        return "success";
+        expect(element.innerText).toBe("winner: X");
       });
-      console.log(message);
     });
   },
   timeout
