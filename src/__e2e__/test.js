@@ -8,7 +8,7 @@ describe(
     beforeAll(async () => {
       page = await global.__BROWSER__.newPage();
       await page.goto("https://google.com");
-      await page.goto("http://node:3000");
+      await page.goto("http://127.0.0.1:3000");
     }, timeout);
 
     it("should load without error", async () => {
